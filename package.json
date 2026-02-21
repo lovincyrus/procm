@@ -1,0 +1,31 @@
+{
+  "name": "procm",
+  "version": "0.0.1",
+  "description": "Terminal process manager with sorting, filtering, and kill/restart",
+  "module": "index.ts",
+  "type": "module",
+  "bin": {
+    "procm": "./index.ts"
+  },
+  "scripts": {
+    "start": "bun index.ts"
+  },
+  "keywords": [
+    "process",
+    "manager",
+    "tui",
+    "terminal",
+    "cli",
+    "daemon"
+  ],
+  "license": "MIT",
+  "devDependencies": {
+    "@types/bun": "latest"
+  },
+  "peerDependencies": {
+    "typescript": "^5"
+  },
+  "dependencies": {
+    "@opentui/core": "^0.1.80"
+  }
+}
