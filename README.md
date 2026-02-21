@@ -5,13 +5,13 @@ Terminal process manager. View, filter, sort, kill, and restart background proce
 ## Install
 
 ```sh
-bunx procm
+bunx procm-cli
 ```
 
 Or install globally:
 
 ```sh
-bun install -g procm
+bun install -g procm-cli
 ```
 
 Then run:
