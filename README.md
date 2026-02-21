@@ -14,6 +14,14 @@ Or install globally:
 bun install -g procm-cli
 ```
 
+```sh
+npm install -g procm-cli
+```
+
+```sh
+brew install lovincyrus/tap/procm
+```
+
 Then run:
 
 ```sh
