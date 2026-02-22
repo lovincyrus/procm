@@ -63,5 +63,5 @@ bun test
 
 ## Requirements
 
-- [Bun](https://bun.sh) runtime
 - macOS (uses `ps` for process data)
+- [Bun](https://bun.sh) runtime (only for npm/source installs; Homebrew installs a standalone binary)
