@@ -1,0 +1,61 @@
+name: Release
+
+on:
+  push:
+    tags:
+      - "v*"
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    strategy:
+      matrix:
+        include:
+          - os: macos-latest
+            arch: arm64
+          - os: macos-13
+            arch: x86_64
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: oven-sh/setup-bun@v2
+
+      - run: bun install
+
+      - run: bun build --compile index.ts --outfile procm
+
+      - name: Upload binary
+        uses: actions/upload-artifact@v4
+        with:
+          name: procm-darwin-${{ matrix.arch }}
+          path: procm
+
+  release:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          name: procm-darwin-arm64
+          path: arm64
+
+      - uses: actions/download-artifact@v4
+        with:
+          name: procm-darwin-x86_64
+          path: x86_64
+
+      - name: Prepare binaries
+        run: |
+          mv arm64/procm procm-darwin-arm64
+          mv x86_64/procm procm-darwin-x86_64
+          chmod +x procm-darwin-arm64 procm-darwin-x86_64
+
+      - name: Create release
+        uses: softprops/action-gh-release@v2
+        with:
+          files: |
+            procm-darwin-arm64
+            procm-darwin-x86_64

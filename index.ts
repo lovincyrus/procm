@@ -1,4 +1,10 @@
 #!/usr/bin/env bun
+
+if (process.argv.includes("--version") || process.argv.includes("-v")) {
+  console.log("0.0.1");
+  process.exit(0);
+}
+
 import {
   createCliRenderer,
   BoxRenderable,
