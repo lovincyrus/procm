@@ -2,6 +2,9 @@
 
 Terminal process manager. View, filter, sort, kill, and restart background processes.
 
+<img width="3052" height="1562" alt="procm-demo" src="https://github.com/user-attachments/assets/ed31cf1a-e089-43e5-b8a4-910748ed3a4d" />
+
+
 ## Install
 
 ```sh
