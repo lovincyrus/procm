@@ -47,15 +47,15 @@ jobs:
           name: procm-darwin-x86_64
           path: x86_64
 
-      - name: Prepare binaries
+      - name: Prepare tarballs
         run: |
-          mv arm64/procm procm-darwin-arm64
-          mv x86_64/procm procm-darwin-x86_64
-          chmod +x procm-darwin-arm64 procm-darwin-x86_64
+          chmod +x arm64/procm x86_64/procm
+          tar -czf procm-darwin-arm64.tar.gz -C arm64 procm
+          tar -czf procm-darwin-x86_64.tar.gz -C x86_64 procm
 
       - name: Create release
         uses: softprops/action-gh-release@v2
         with:
           files: |
-            procm-darwin-arm64
-            procm-darwin-x86_64
+            procm-darwin-arm64.tar.gz
+            procm-darwin-x86_64.tar.gz
